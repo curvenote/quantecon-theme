@@ -7,6 +7,7 @@ node_modules
 .turbo
 .yalc
 yalc.lock
+.DS_Store
 
 /public/build
 /public/*thebe*

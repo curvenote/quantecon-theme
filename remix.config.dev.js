@@ -59,6 +59,7 @@ module.exports = {
     '@curvenote/ansi-to-react',
     'jats-utils',
     'react-merge-refs',
+    'lucide-react',
   ],
   watchPaths: ['../../packages/**/*'],
   future: {
@@ -68,5 +69,10 @@ module.exports = {
     v2_headers: true,
     v2_meta: true,
     v2_errorBoundary: true,
+  },
+  resolve: {
+    alias: {
+      '~/*': ['./app/*'],
+    },
   },
 };
