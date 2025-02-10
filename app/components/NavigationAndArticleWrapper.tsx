@@ -1,13 +1,10 @@
-import { useSidebarHeight, PrimaryNavigation } from '@myst-theme/site';
+import { useSidebarHeight } from '@myst-theme/site';
 import { TabStateProvider, UiStateProvider, useThemeTop } from '@myst-theme/providers';
-import { MadeWithMyst } from '@myst-theme/icons';
 import { Toolbar } from './toolbar/Toolbar';
+import { Sidebar } from './Sidebar';
 
 function NavigationAndArticleWrapperInternal({
   children,
-  hide_toc,
-  hideSearch,
-  projectSlug,
   inset = 20, // begin text 20px from the top (aligned with menu)
 }: {
   hide_toc?: boolean;
@@ -17,16 +14,11 @@ function NavigationAndArticleWrapperInternal({
   inset?: number;
 }) {
   const top = useThemeTop();
-  const { container, toc } = useSidebarHeight(top, inset);
+  const { container } = useSidebarHeight(top, inset);
   return (
     <>
       <Toolbar />
-      <PrimaryNavigation
-        sidebarRef={toc}
-        hide_toc={hide_toc}
-        footer={<MadeWithMyst />}
-        projectSlug={projectSlug}
-      />
+      <Sidebar />
       <TabStateProvider>
         <article
           ref={container}

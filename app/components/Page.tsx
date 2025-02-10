@@ -25,27 +25,28 @@ export function Page() {
     ...pageDesign,
   };
   return (
-    <NavigationAndArticleWrapper
-      hide_toc={hide_toc}
-      hideSearch={hide_search}
-      projectSlug={data.page.project}
-    >
-      {/* <ProjectProvider project={project}> */}
-      <ProjectProvider>
-        <ComputeOptionsProvider
-          features={{
-            notebookCompute: true,
-            figureCompute: true,
-            launchBinder: false,
-          }}
+    <div className="relative bg-white dark:bg-qepage-dark">
+      <ProjectProvider project={data.project}>
+        <NavigationAndArticleWrapper
+          hide_toc={hide_toc}
+          hideSearch={hide_search}
+          projectSlug={data.page.project}
         >
-          <ThebeLoaderAndServer baseurl={baseurl}>
-            <main ref={container} className="article-grid subgrid-gap col-screen">
-              <PageContent article={data.page} hide_all_footer_links={hide_footer_links} />
-            </main>
-          </ThebeLoaderAndServer>
-        </ComputeOptionsProvider>
+          <ComputeOptionsProvider
+            features={{
+              notebookCompute: true,
+              figureCompute: true,
+              launchBinder: false,
+            }}
+          >
+            <ThebeLoaderAndServer baseurl={baseurl}>
+              <main ref={container} className="article-grid subgrid-gap col-screen">
+                <PageContent article={data.page} hide_all_footer_links={hide_footer_links} />
+              </main>
+            </ThebeLoaderAndServer>
+          </ComputeOptionsProvider>
+        </NavigationAndArticleWrapper>
       </ProjectProvider>
-    </NavigationAndArticleWrapper>
+    </div>
   );
 }

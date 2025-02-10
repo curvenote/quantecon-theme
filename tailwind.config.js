@@ -15,6 +15,9 @@ module.exports = {
         'qetext-dark': '#fff',
         'qetext-dark-muted': '#a6a6a6',
       },
+      fontFamily: {
+        sans: ['"Source Sans 3"', 'sans-serif'],
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
