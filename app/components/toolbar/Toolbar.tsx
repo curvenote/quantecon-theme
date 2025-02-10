@@ -9,10 +9,10 @@ import {
   CloudDownload,
   House,
   Maximize,
-  Menu,
   File,
 } from 'lucide-react';
 import { SidebarToggle, ThemeButton } from './buttons';
+import { Link } from '@remix-run/react';
 
 export function Toolbar() {
   const config = useSiteManifest();
@@ -33,10 +33,18 @@ export function Toolbar() {
           <SidebarToggle />
         </li>
         <li>
-          <House width={iconSize} height={iconSize} />
+          <Link to="/">
+            <House width={iconSize} height={iconSize} />
+          </Link>
         </li>
         <li>
-          <img src="/logos/qemb-logo.png" alt="QuantEcon Logo" className="h-7" />
+          <Link to="https://quantecon.org/">
+            <img
+              className="transition-all duration-500 cursor-pointer hover:scale-110 h-7"
+              src="/logos/qemb-logo.png"
+              alt="QuantEcon Logo"
+            />
+          </Link>
         </li>
         <li className="flex-grow" />
         <li>
