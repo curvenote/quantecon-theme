@@ -88,8 +88,8 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
                 mdast={tree as GenericParent}
               />
               <BackmatterParts containerClassName="col-body" parts={parts} />
-              <Footnotes containerClassName="col-body" />
-              <Bibliography containerClassName="col-body" />
+              <Footnotes innerClassName="col-body" />
+              <Bibliography innerClassName="col-body" />
               <ConnectionStatusTray />
               {projectParts?.footer && <SiteFooter content={projectParts.footer.mdast} />}
               <BackToTop />
