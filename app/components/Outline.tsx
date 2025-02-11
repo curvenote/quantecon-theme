@@ -42,18 +42,22 @@ export function Outline({
           innerClassName
         )}
       >
-        <p className="mb-4 text-lg font-bold text-opacity-100 dark:text-qetext-dark">
-          On this page
-        </p>
-        <ul className="space-y-2 not-prose">
-          {headings.map((h, i) => (
-            <li key={`outline-li-${h.id}`}>
-              <Link to={`#${h.id}`}>
-                {pageEnumerator ? `${pageEnumerator}.${i + 1}. ${h.title}` : h.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {headings.length > 0 && (
+          <>
+            <p className="mb-4 text-lg font-bold text-opacity-100 dark:text-qetext-dark">
+              On this page
+            </p>
+            <ul className="space-y-2 not-prose">
+              {headings.map((h, i) => (
+                <li key={`outline-li-${h.id}`}>
+                  <Link to={`#${h.id}`}>
+                    {pageEnumerator ? `${pageEnumerator}.${i + 1}. ${h.title}` : h.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <div>
           <img
             className="dark:hidden"
