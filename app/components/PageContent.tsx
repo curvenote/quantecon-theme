@@ -5,6 +5,7 @@ import {
   useSiteManifest,
   useThemeTop,
   useMediaQuery,
+  GridSystemProvider,
 } from '@myst-theme/providers';
 import {
   Bibliography,
@@ -29,8 +30,18 @@ import {
   ErrorTray,
   useComputeOptions,
 } from '@myst-theme/jupyter';
-import { FrontmatterBlock } from '@myst-theme/frontmatter';
 import type { TemplateOptions } from '../types.js';
+
+function GridGuide() {
+  return (
+    <>
+      <div className="sticky top-[50px] h-[5px] bg-blue-300 col-gutter-left"></div>
+      <div className="sticky top-[50px] h-[5px] bg-green-300 col-body"></div>
+      <div className="sticky top-[50px] h-[5px] bg-yellow-300 col-margin"></div>
+      <div className="sticky top-[50px] h-[5px] bg-blue-300 col-gutter-right"></div>
+    </>
+  );
+}
 
 export const PageContent = React.memo(function ({ article }: { article: PageLoader }) {
   const manifest = useProjectManifest();
@@ -53,63 +64,52 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
   const { location } = article;
 
   return (
-    <ReferencesProvider
-      references={{ ...article.references, article: article.mdast }}
-      frontmatter={article.frontmatter}
-    >
-      <BusyScopeProvider>
-        <ExecuteScopeProvider enable={compute?.enabled ?? false} contents={article}>
-          <div className="simple-center-grid subgrid-gap">
-            <div className="h-[100px] bg-blue-300 col-gutter-left"></div>
-            <div className="h-[100px] bg-green-300 col-body"></div>
-            <div className="h-[100px] bg-yellow-300 col-margin"></div>
-            <div className="h-[100px] bg-blue-300 col-gutter-right"></div>
-            <div className="h-[30px] bg-red-300 col-screen"></div>
-            <div className="h-[100px] bg-blue-300 col-gutter-left"></div>
-            <div className="h-[100px] bg-green-300 col-body"></div>
-            <div className="h-[100px] bg-yellow-300 col-margin"></div>
-            <div className="h-[100px] bg-blue-300 col-gutter-right"></div>
-            <div className="h-[30px] bg-red-300 col-screen"></div>
-            <div className="h-[100px] bg-blue-300 col-gutter-left"></div>
-            <div className="h-[100px] bg-green-300 col-body"></div>
-            <div className="h-[100px] bg-yellow-300 col-margin"></div>
-            <div className="h-[100px] bg-blue-300 col-gutter-right"></div>
-            <div className="h-[30px] bg-red-300 col-screen"></div>
-            {/* <FrontmatterBlock
-              kind={article.kind}
-              frontmatter={{ ...article.frontmatter, downloads }}
-              className="mb-8 pt-9 col-body"
-              thebe={thebe}
-              location={location}
-            /> */}
-            {/* <div
-              className="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin"
-              style={{ top }}
-            >
-              <DocumentOutline
-                className="relative mt-9"
-                maxdepth={outline_maxdepth}
-                isMargin={isOutlineMargin}
+    <GridSystemProvider grid="simple-center-grid">
+      <ReferencesProvider
+        references={{ ...article.references, article: article.mdast }}
+        frontmatter={article.frontmatter}
+      >
+        <BusyScopeProvider>
+          <ExecuteScopeProvider enable={compute?.enabled ?? false} contents={article}>
+            <div className="simple-center-grid grid-gap">
+              <GridGuide />
+              <div
+                className="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin"
+                style={{ top }}
+              >
+                <DocumentOutline
+                  className="relative mt-9"
+                  maxdepth={outline_maxdepth}
+                  isMargin={isOutlineMargin}
+                />
+              </div>
+              {compute?.enabled &&
+                compute.features.notebookCompute &&
+                article.kind === SourceFileKind.Notebook && <NotebookToolbar showLaunch />}
+              {compute?.enabled && article.kind === SourceFileKind.Article && (
+                <ErrorTray pageSlug={article.slug} />
+              )}
+              <div id="skip-to-article" />
+              <FrontmatterParts
+                containerClassName="col-body"
+                parts={parts}
+                keywords={keywords}
+                hideKeywords
               />
-            </div> */}
-            {compute?.enabled &&
-              compute.features.notebookCompute &&
-              article.kind === SourceFileKind.Notebook && <NotebookToolbar showLaunch />}
-            {compute?.enabled && article.kind === SourceFileKind.Article && (
-              <ErrorTray pageSlug={article.slug} />
-            )}
-            <div id="skip-to-article" />
-            {/* <div className="w-full bg-red-500 col-screen h-[500px]"></div> */}
-            {/* <FrontmatterParts parts={parts} keywords={keywords} hideKeywords /> */}
-            {/* <ContentBlocks pageKind={article.kind} mdast={tree as GenericParent} /> */}
-            {/* <BackmatterParts parts={parts} /> */}
-            {/* <Footnotes /> */}
-            {/* <Bibliography /> */}
-            <ConnectionStatusTray />
-          </div>
-        </ExecuteScopeProvider>
-      </BusyScopeProvider>
-    </ReferencesProvider>
+              <ContentBlocks
+                className="col-body"
+                pageKind={article.kind}
+                mdast={tree as GenericParent}
+              />
+              <BackmatterParts containerClassName="col-body" parts={parts} />
+              <Footnotes containerClassName="col-body" />
+              <Bibliography containerClassName="col-body" />
+              <ConnectionStatusTray />
+            </div>
+          </ExecuteScopeProvider>
+        </BusyScopeProvider>
+      </ReferencesProvider>
+    </GridSystemProvider>
   );
 });
 
