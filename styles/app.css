@@ -21,4 +21,16 @@
   .simple-center-grid > .col-margin {
     @apply hidden xl:block;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  a:hover {
+    @apply underline;
+  }
 }

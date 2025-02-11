@@ -40,7 +40,7 @@ export function Page() {
             }}
           >
             <ThebeLoaderAndServer baseurl={baseurl}>
-              <main ref={container}>
+              <main className="pt-[72px]" ref={container}>
                 <PageContent article={data.page} />
               </main>
             </ThebeLoaderAndServer>

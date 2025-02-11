@@ -6,6 +6,29 @@ module.exports = {
   theme: {
     extend: {
       ...mystTheme.themeExtensions,
+      typography: {
+        ...mystTheme.themeExtensions.typography,
+        DEFAULT: {
+          css: {
+            a: {
+              color: 'rgb(0 73 121 / 0.8)',
+              fontWeight: 'inherit',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+          },
+        },
+        invert: {
+          css: {
+            a: {
+              color: '#ffffff',
+              fontWeight: '600',
+            },
+          },
+        },
+      },
       gridTemplateColumns: {
         ...mystTheme.themeExtensions.gridTemplateColumns,
         'simple-sm': '[screen-start] 1fr [body-start] 800px [body-end] 1fr [screen-end]',
@@ -37,6 +60,7 @@ module.exports = {
         'qetext-light': '#444444',
         'qetext-dark': '#fff',
         'qetext-dark-muted': '#a6a6a6',
+        'qeborder-blue': 'rgb(0 114 188)',
       },
       fontFamily: {
         sans: ['"Source Sans 3"', 'sans-serif'],

@@ -31,14 +31,16 @@ import {
   useComputeOptions,
 } from '@myst-theme/jupyter';
 import type { TemplateOptions } from '../types.js';
+import { ProjectFrontmatter } from './ProjectFrontmatter.js';
+import { BackToTop, Outline } from './Outline.js';
 
 function GridGuide() {
   return (
     <>
-      <div className="sticky top-[50px] h-[5px] bg-blue-300 col-gutter-left"></div>
-      <div className="sticky top-[50px] h-[5px] bg-green-300 col-body"></div>
-      <div className="sticky top-[50px] h-[5px] bg-yellow-300 col-margin"></div>
-      <div className="sticky top-[50px] h-[5px] bg-blue-300 col-gutter-right"></div>
+      <div className="sticky h-[2px] bg-blue-300 col-gutter-left"></div>
+      <div className="sticky h-[2px] bg-green-300 col-body"></div>
+      <div className="sticky h-[2px] bg-yellow-300 col-margin"></div>
+      <div className="sticky h-[2px] bg-blue-300 col-gutter-right"></div>
     </>
   );
 }
@@ -46,50 +48,43 @@ function GridGuide() {
 export const PageContent = React.memo(function ({ article }: { article: PageLoader }) {
   const manifest = useProjectManifest();
   const compute = useComputeOptions();
-  const top = useThemeTop();
 
   const pageDesign: TemplateOptions = (article.frontmatter as any)?.site ?? {};
   const siteDesign: TemplateOptions =
     (useSiteManifest() as SiteManifest & TemplateOptions)?.options ?? {};
-  const { outline_maxdepth } = {
-    ...siteDesign,
-    ...pageDesign,
-  };
-  const downloads = combineDownloads(manifest?.downloads, article.frontmatter);
   const tree = copyNode(article.mdast);
   const keywords = article.frontmatter?.keywords ?? [];
   const parts = extractKnownParts(tree, article.frontmatter?.parts);
-  const isOutlineMargin = useMediaQuery('(min-width: 1024px)');
-  const { thebe } = manifest as any;
-  const { location } = article;
 
   return (
-    <GridSystemProvider grid="simple-center-grid">
+    <GridSystemProvider gridSystem="simple-center-grid">
       <ReferencesProvider
         references={{ ...article.references, article: article.mdast }}
         frontmatter={article.frontmatter}
       >
         <BusyScopeProvider>
           <ExecuteScopeProvider enable={compute?.enabled ?? false} contents={article}>
-            <div className="simple-center-grid grid-gap">
+            <div className="relative simple-center-grid subgrid-gap">
+              <div id="top" className="h-0 m-0 col-body" />
               <GridGuide />
-              <div
-                className="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin"
-                style={{ top }}
-              >
-                <DocumentOutline
-                  className="relative mt-9"
-                  maxdepth={outline_maxdepth}
-                  isMargin={isOutlineMargin}
-                />
-              </div>
+              <ProjectFrontmatter
+                projectTitle={manifest?.title ?? 'Project Title'}
+                pageTitle={manifest?.index !== article.slug ? article.frontmatter.title : undefined}
+                authors={article.frontmatter.authors}
+              />
+              <Outline
+                containerClassName="hidden lg:col-margin"
+                pageEnumerator={article.frontmatter.enumerator}
+              />
+
               {compute?.enabled &&
                 compute.features.notebookCompute &&
                 article.kind === SourceFileKind.Notebook && <NotebookToolbar showLaunch />}
               {compute?.enabled && article.kind === SourceFileKind.Article && (
                 <ErrorTray pageSlug={article.slug} />
               )}
-              <div id="skip-to-article" />
+              <div id="skip-to-article" className="h-0 m-0 col-body" />
+
               <FrontmatterParts
                 containerClassName="col-body"
                 parts={parts}
@@ -97,7 +92,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
                 hideKeywords
               />
               <ContentBlocks
-                className="col-body"
+                className="col-body prose-qetext-light dark:prose-qetext-dark"
                 pageKind={article.kind}
                 mdast={tree as GenericParent}
               />
@@ -105,6 +100,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
               <Footnotes containerClassName="col-body" />
               <Bibliography containerClassName="col-body" />
               <ConnectionStatusTray />
+              <BackToTop />
             </div>
           </ExecuteScopeProvider>
         </BusyScopeProvider>
