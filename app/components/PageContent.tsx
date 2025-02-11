@@ -3,22 +3,16 @@ import {
   ReferencesProvider,
   useProjectManifest,
   useSiteManifest,
-  useThemeTop,
-  useMediaQuery,
   GridSystemProvider,
 } from '@myst-theme/providers';
 import {
   Bibliography,
   ContentBlocks,
-  FooterLinksBlock,
   FrontmatterParts,
   BackmatterParts,
-  DocumentOutline,
   extractKnownParts,
   Footnotes,
-  combineDownloads,
 } from '@myst-theme/site';
-import type { SiteManifest } from 'myst-config';
 import type { PageLoader } from '@myst-theme/common';
 import { copyNode, type GenericParent } from 'myst-common';
 import { SourceFileKind } from 'myst-spec-ext';
@@ -30,7 +24,6 @@ import {
   ErrorTray,
   useComputeOptions,
 } from '@myst-theme/jupyter';
-import type { TemplateOptions } from '../types.js';
 import { ProjectFrontmatter } from './ProjectFrontmatter.js';
 import { BackToTop, Outline } from './Outline.js';
 import { SiteFooter } from './SiteFooter.js';
@@ -39,10 +32,6 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
   const config = useSiteManifest();
   const manifest = useProjectManifest();
   const compute = useComputeOptions();
-
-  const pageDesign: TemplateOptions = (article.frontmatter as any)?.site ?? {};
-  const siteDesign: TemplateOptions =
-    (useSiteManifest() as SiteManifest & TemplateOptions)?.options ?? {};
   const tree = copyNode(article.mdast);
   const keywords = article.frontmatter?.keywords ?? [];
   const parts = extractKnownParts(tree, article.frontmatter?.parts);
