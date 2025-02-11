@@ -33,19 +33,10 @@ import {
 import type { TemplateOptions } from '../types.js';
 import { ProjectFrontmatter } from './ProjectFrontmatter.js';
 import { BackToTop, Outline } from './Outline.js';
-
-function GridGuide() {
-  return (
-    <>
-      <div className="sticky h-[2px] bg-blue-300 col-gutter-left"></div>
-      <div className="sticky h-[2px] bg-green-300 col-body"></div>
-      <div className="sticky h-[2px] bg-yellow-300 col-margin"></div>
-      <div className="sticky h-[2px] bg-blue-300 col-gutter-right"></div>
-    </>
-  );
-}
+import { SiteFooter } from './SiteFooter.js';
 
 export const PageContent = React.memo(function ({ article }: { article: PageLoader }) {
+  const config = useSiteManifest();
   const manifest = useProjectManifest();
   const compute = useComputeOptions();
 
@@ -55,6 +46,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
   const tree = copyNode(article.mdast);
   const keywords = article.frontmatter?.keywords ?? [];
   const parts = extractKnownParts(tree, article.frontmatter?.parts);
+  const projectParts = config?.parts ?? {};
 
   return (
     <GridSystemProvider gridSystem="simple-center-grid">
@@ -66,7 +58,6 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
           <ExecuteScopeProvider enable={compute?.enabled ?? false} contents={article}>
             <div className="relative simple-center-grid subgrid-gap">
               <div id="top" className="h-0 m-0 col-body" />
-              <GridGuide />
               <ProjectFrontmatter
                 projectTitle={manifest?.title ?? 'Project Title'}
                 pageTitle={manifest?.index !== article.slug ? article.frontmatter.title : undefined}
@@ -100,6 +91,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
               <Footnotes containerClassName="col-body" />
               <Bibliography containerClassName="col-body" />
               <ConnectionStatusTray />
+              {projectParts?.footer && <SiteFooter content={projectParts.footer.mdast} />}
               <BackToTop />
             </div>
           </ExecuteScopeProvider>

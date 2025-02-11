@@ -51,10 +51,6 @@ export function ContentsSidebar() {
     addGroups: false,
   });
 
-  const contentsWithGroups = getProjectHeadings(config, project?.slug, {
-    addGroups: true,
-  });
-
   const headings = (contents ?? [])
     ?.filter((heading): heading is StrictHeading => heading.level !== 'index')
     .filter((heading) => heading.level < 3)
