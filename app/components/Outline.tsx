@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import useScroll from '~/hooks/useScroll';
 
 export function BackToTop() {
-  const isScrolled = useScroll(50);
+  const isScrolled = useScroll(80);
   return (
     <div className="fixed bottom-0 left-0 right-0 col-screen not-prose simple-center-grid grid-gap">
       <div className="relative col-margin">

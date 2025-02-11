@@ -1,4 +1,6 @@
+import { PageLoader } from '@myst-theme/common';
 import { useNavOpen, useThemeSwitcher } from '@myst-theme/providers';
+import { Link, useLoaderData } from '@remix-run/react';
 import classNames from 'classnames';
 import { Menu, Sunset, X } from 'lucide-react';
 
@@ -37,5 +39,48 @@ export function SidebarToggle() {
         height={24}
       />
     </div>
+  );
+}
+
+export function QuantEconButton() {
+  return (
+    <Link to="https://quantecon.org/">
+      <img
+        className="duration-300 cursor-pointer transition-scale hover:scale-110 h-7"
+        src="/logos/qemb-logo.png"
+        alt="QuantEcon Logo"
+      />
+    </Link>
+  );
+}
+
+export function GitHubButton() {
+  const { isDark } = useThemeSwitcher();
+  const { page } = useLoaderData() as { page: PageLoader };
+  const editUrl = page.frontmatter?.edit_url;
+
+  const logo = (
+    <>
+      {isDark ? (
+        <img
+          src="/logos/github-mark-white.svg"
+          alt="Github Logo"
+          className="h-5 opacity-80 hover:scale-110"
+        />
+      ) : (
+        <img
+          src="/logos/github-mark.svg"
+          alt="Github Logo"
+          className="h-5 opacity-80 hover:scale-110"
+        />
+      )}
+    </>
+  );
+
+  return (
+    <span className="cursor-pointer">
+      {editUrl && <Link to={editUrl}>{logo}</Link>}
+      {!editUrl && logo}
+    </span>
   );
 }

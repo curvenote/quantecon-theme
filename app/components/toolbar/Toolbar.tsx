@@ -1,24 +1,11 @@
 import classNames from 'classnames';
-import { useNavOpen, useSiteManifest, useThemeSwitcher } from '@myst-theme/providers';
-import { LoadingBar, useTheme } from '@myst-theme/site';
+import { LoadingBar } from '@myst-theme/site';
 import { Search } from '@myst-theme/site/src/components/Navigation/Search';
-import {
-  CircleMinus,
-  CirclePlay,
-  CirclePlus,
-  CloudDownload,
-  House,
-  Maximize,
-  File,
-} from 'lucide-react';
-import { SidebarToggle, ThemeButton } from './buttons';
+import { CircleMinus, CirclePlay, CirclePlus, CloudDownload, House, Maximize } from 'lucide-react';
+import { GitHubButton, QuantEconButton, SidebarToggle, ThemeButton } from './buttons';
 import { Link } from '@remix-run/react';
 
 export function Toolbar() {
-  const config = useSiteManifest();
-  const { title, nav, actions } = config ?? {};
-  const { logo, logo_dark, logo_text } = config?.options ?? {};
-  const { isDark } = useThemeSwitcher();
   const iconSize = 20;
   return (
     <div
@@ -38,13 +25,7 @@ export function Toolbar() {
           </Link>
         </li>
         <li>
-          <Link to="https://quantecon.org/">
-            <img
-              className="transition-all duration-500 cursor-pointer hover:scale-110 h-7"
-              src="/logos/qemb-logo.png"
-              alt="QuantEcon Logo"
-            />
-          </Link>
+          <QuantEconButton />
         </li>
         <li className="flex-grow" />
         <li>
@@ -69,11 +50,7 @@ export function Toolbar() {
           <CirclePlay width={iconSize} height={iconSize} />
         </li>
         <li>
-          {isDark ? (
-            <img src="/logos/github-mark-white.svg" alt="Github Logo" className="h-5 opacity-80" />
-          ) : (
-            <img src="/logos/github-mark.svg" alt="Github Logo" className="h-5 opacity-80" />
-          )}
+          <GitHubButton />
         </li>
       </ul>
       <LoadingBar />
