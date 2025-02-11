@@ -69,9 +69,6 @@ export function Toolbar() {
           <CirclePlay width={iconSize} height={iconSize} />
         </li>
         <li>
-          <File width={iconSize} height={iconSize} />
-        </li>
-        <li>
           {isDark ? (
             <img src="/logos/github-mark-white.svg" alt="Github Logo" className="h-5 opacity-80" />
           ) : (

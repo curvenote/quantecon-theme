@@ -1,7 +1,7 @@
 import { useSidebarHeight } from '@myst-theme/site';
 import { TabStateProvider, UiStateProvider, useThemeTop } from '@myst-theme/providers';
 import { Toolbar } from './toolbar/Toolbar';
-import { Sidebar } from './Sidebar';
+import { ContentsSidebar } from './ContentsSidebar';
 
 function NavigationAndArticleWrapperInternal({
   children,
@@ -18,14 +18,9 @@ function NavigationAndArticleWrapperInternal({
   return (
     <>
       <Toolbar />
-      <Sidebar />
+      <ContentsSidebar />
       <TabStateProvider>
-        <article
-          ref={container}
-          className="article content article-grid grid-gap"
-          // article does not neet to get top as it is in the page flow (z-0)
-          // style={{ marginTop: top }}
-        >
+        <article ref={container} className="article content" style={{ marginTop: top }}>
           {children}
         </article>
       </TabStateProvider>

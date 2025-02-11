@@ -1,2 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 @import '@myst-theme/styles';
+
+@layer base {
+  .grid-gap {
+    @apply gap-1 md:gap-2 xl:gap-3 2xl:gap-4;
+  }
+  .subgrid-gap {
+    @apply gap-x-1 md:gap-x-2 xl:gap-x-3 2xl:gap-x-4;
+  }
+
+  .simple-center-grid {
+    @apply grid content-start grid-cols-simple-sm xl:grid-cols-simple-xl;
+  }
+
+  /* Ensure direct children in the grid don't have unwanted margins */
+  .simple-center-grid > * {
+    margin-top: 0 !important;
+  }
+
+  .simple-center-grid > .col-margin {
+    @apply hidden xl:block;
+  }
+}

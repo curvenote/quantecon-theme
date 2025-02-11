@@ -32,15 +32,7 @@ import {
 import { FrontmatterBlock } from '@myst-theme/frontmatter';
 import type { TemplateOptions } from '../types.js';
 
-export const PageContent = React.memo(function ({
-  article,
-  hide_all_footer_links,
-  hideKeywords,
-}: {
-  article: PageLoader;
-  hide_all_footer_links?: boolean;
-  hideKeywords?: boolean;
-}) {
+export const PageContent = React.memo(function ({ article }: { article: PageLoader }) {
   const manifest = useProjectManifest();
   const compute = useComputeOptions();
   const top = useThemeTop();
@@ -48,7 +40,7 @@ export const PageContent = React.memo(function ({
   const pageDesign: TemplateOptions = (article.frontmatter as any)?.site ?? {};
   const siteDesign: TemplateOptions =
     (useSiteManifest() as SiteManifest & TemplateOptions)?.options ?? {};
-  const { hide_title_block, hide_footer_links, hide_outline, outline_maxdepth } = {
+  const { outline_maxdepth } = {
     ...siteDesign,
     ...pageDesign,
   };
@@ -67,18 +59,31 @@ export const PageContent = React.memo(function ({
     >
       <BusyScopeProvider>
         <ExecuteScopeProvider enable={compute?.enabled ?? false} contents={article}>
-          {!hide_title_block && (
-            <FrontmatterBlock
+          <div className="simple-center-grid subgrid-gap">
+            <div className="h-[100px] bg-blue-300 col-gutter-left"></div>
+            <div className="h-[100px] bg-green-300 col-body"></div>
+            <div className="h-[100px] bg-yellow-300 col-margin"></div>
+            <div className="h-[100px] bg-blue-300 col-gutter-right"></div>
+            <div className="h-[30px] bg-red-300 col-screen"></div>
+            <div className="h-[100px] bg-blue-300 col-gutter-left"></div>
+            <div className="h-[100px] bg-green-300 col-body"></div>
+            <div className="h-[100px] bg-yellow-300 col-margin"></div>
+            <div className="h-[100px] bg-blue-300 col-gutter-right"></div>
+            <div className="h-[30px] bg-red-300 col-screen"></div>
+            <div className="h-[100px] bg-blue-300 col-gutter-left"></div>
+            <div className="h-[100px] bg-green-300 col-body"></div>
+            <div className="h-[100px] bg-yellow-300 col-margin"></div>
+            <div className="h-[100px] bg-blue-300 col-gutter-right"></div>
+            <div className="h-[30px] bg-red-300 col-screen"></div>
+            {/* <FrontmatterBlock
               kind={article.kind}
               frontmatter={{ ...article.frontmatter, downloads }}
-              className="mb-8 pt-9"
+              className="mb-8 pt-9 col-body"
               thebe={thebe}
               location={location}
-            />
-          )}
-          {!hide_outline && (
-            <div
-              className="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin-right"
+            /> */}
+            {/* <div
+              className="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin"
               style={{ top }}
             >
               <DocumentOutline
@@ -86,24 +91,22 @@ export const PageContent = React.memo(function ({
                 maxdepth={outline_maxdepth}
                 isMargin={isOutlineMargin}
               />
-            </div>
-          )}
-          {compute?.enabled &&
-            compute.features.notebookCompute &&
-            article.kind === SourceFileKind.Notebook && <NotebookToolbar showLaunch />}
-          {compute?.enabled && article.kind === SourceFileKind.Article && (
-            <ErrorTray pageSlug={article.slug} />
-          )}
-          <div id="skip-to-article" />
-          <FrontmatterParts parts={parts} keywords={keywords} hideKeywords={hideKeywords} />
-          <ContentBlocks pageKind={article.kind} mdast={tree as GenericParent} />
-          <BackmatterParts parts={parts} />
-          <Footnotes />
-          <Bibliography />
-          <ConnectionStatusTray />
-          {!hide_footer_links && !hide_all_footer_links && (
-            <FooterLinksBlock links={article.footer} />
-          )}
+            </div> */}
+            {compute?.enabled &&
+              compute.features.notebookCompute &&
+              article.kind === SourceFileKind.Notebook && <NotebookToolbar showLaunch />}
+            {compute?.enabled && article.kind === SourceFileKind.Article && (
+              <ErrorTray pageSlug={article.slug} />
+            )}
+            <div id="skip-to-article" />
+            {/* <div className="w-full bg-red-500 col-screen h-[500px]"></div> */}
+            {/* <FrontmatterParts parts={parts} keywords={keywords} hideKeywords /> */}
+            {/* <ContentBlocks pageKind={article.kind} mdast={tree as GenericParent} /> */}
+            {/* <BackmatterParts parts={parts} /> */}
+            {/* <Footnotes /> */}
+            {/* <Bibliography /> */}
+            <ConnectionStatusTray />
+          </div>
         </ExecuteScopeProvider>
       </BusyScopeProvider>
     </ReferencesProvider>

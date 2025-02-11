@@ -18,16 +18,18 @@ function Section({ group }: { group: HeadingGroup }) {
     <ul>
       {group.map((heading) => (
         <li
-          className="my-2 font-light text-qetext-light opacity-80"
+          className="my-[6px] font-light text-qetext-light opacity-80"
           key={heading.slug ?? heading.title}
         >
           {heading.slug ? (
             <Link to={heading.slug}>
-              {heading.enumerator}. {heading.title}
+              {heading.enumerator ? `${heading.enumerator}. ` : ''}
+              {heading.title}
             </Link>
           ) : (
             <span>
-              {heading.enumerator}.{heading.title}
+              {heading.enumerator ? `${heading.enumerator}. ` : ''}
+              {heading.title}
             </span>
           )}
         </li>
@@ -36,7 +38,7 @@ function Section({ group }: { group: HeadingGroup }) {
   );
 }
 
-export function Sidebar() {
+export function ContentsSidebar() {
   const [open] = useNavOpen();
   const config = useSiteManifest();
   const project = useProjectManifest();
@@ -49,7 +51,6 @@ export function Sidebar() {
     addGroups: false,
   });
 
-  let enumerator = 1;
   const headings = (contents ?? [])
     ?.filter((heading): heading is StrictHeading => heading.level !== 'index')
     .filter((heading) => heading.level < 3)
@@ -60,11 +61,12 @@ export function Sidebar() {
         return [...acc, heading];
       }
       const last = acc[acc.length - 1];
+      const item = heading;
       if (Array.isArray(last)) {
-        last.push({ ...heading, enumerator: `${enumerator++}` });
+        last.push(item);
         return acc;
       } else {
-        return [...acc, [{ ...heading, enumerator: `${enumerator++}` }]];
+        return [...acc, [item]];
       }
     }, [] as (StrictHeading | HeadingGroup)[]);
 
@@ -73,8 +75,9 @@ export function Sidebar() {
       ref={toc}
       className={classNames(
         'fixed top-0 left-0',
+        'w-[250px] 2xl:w-[350px]',
         'h-screen w-[250px] z-[60] pt-[40px] pb-[90px] px-9',
-        'bg-qetoolbar-light dark:bg-qetoolbar-dark',
+        'bg-qetoolbar-light dark:bg-qetoolbar-dark ',
         'border-r-[1px] border-qetoolbar-border',
         'transition-all duration-300 ease-in-out',
         'overflow-y-auto',
@@ -82,7 +85,9 @@ export function Sidebar() {
       )}
       style={{ top: '50px' }}
     >
-      <div className="mb-4 text-lg font-bold text-qetext-light">Contents</div>
+      <div className="mb-4 text-lg font-bold text-qetext-light dark:text-qetoolbar-dark">
+        Contents
+      </div>
       <nav>
         {headings?.map((headingOrGroup) => {
           if (Array.isArray(headingOrGroup))

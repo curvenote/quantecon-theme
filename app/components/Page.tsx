@@ -20,7 +20,7 @@ export function Page() {
   const pageDesign: TemplateOptions = (data.page.frontmatter as any)?.site ?? {};
   const siteDesign: TemplateOptions =
     (useSiteManifest() as SiteManifest & TemplateOptions)?.options ?? {};
-  const { hide_toc, hide_search, hide_footer_links } = {
+  const { hide_toc, hide_search } = {
     ...siteDesign,
     ...pageDesign,
   };
@@ -40,8 +40,8 @@ export function Page() {
             }}
           >
             <ThebeLoaderAndServer baseurl={baseurl}>
-              <main ref={container} className="article-grid subgrid-gap col-screen">
-                <PageContent article={data.page} hide_all_footer_links={hide_footer_links} />
+              <main ref={container}>
+                <PageContent article={data.page} />
               </main>
             </ThebeLoaderAndServer>
           </ComputeOptionsProvider>
