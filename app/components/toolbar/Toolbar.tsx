@@ -10,6 +10,7 @@ import { DownloadsButton } from './DownloadButton';
 import { GitHubButton } from './GitHubButton';
 import { LaunchButton } from './LaunchButton';
 import { FullScreenButton } from './FullscreenButton';
+import { FontScaleListItems } from './FontScaleListItems';
 
 export function Toolbar() {
   const iconSize = 20;
@@ -40,12 +41,7 @@ export function Toolbar() {
         <li>
           <FullScreenButton size={iconSize} />
         </li>
-        <li>
-          <CirclePlus className="opacity-60" width={iconSize} height={iconSize} />
-        </li>
-        <li>
-          <CircleMinus className="opacity-60" width={iconSize} height={iconSize} />
-        </li>
+        <FontScaleListItems scale="1.2" size={iconSize} />
         <li className="flex items-center pr-[36px]">
           <ThemeButton className="w-5 h-5 opacity-60" />
         </li>
