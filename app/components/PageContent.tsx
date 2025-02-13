@@ -48,6 +48,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
             <div className="relative simple-center-grid subgrid-gap">
               <div id="top" className="h-0 m-0 col-body" />
               <ProjectFrontmatter
+                className="mb-12"
                 projectTitle={manifest?.title ?? 'Project Title'}
                 pageTitle={manifest?.index !== article.slug ? article.frontmatter.title : undefined}
                 authors={article.frontmatter.authors}
@@ -56,15 +57,15 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
                 containerClassName="hidden lg:col-margin"
                 pageEnumerator={article.frontmatter.enumerator}
               />
-
               {compute?.enabled &&
                 compute.features.notebookCompute &&
                 article.kind === SourceFileKind.Notebook && <NotebookToolbar showLaunch />}
               {compute?.enabled && article.kind === SourceFileKind.Article && (
                 <ErrorTray pageSlug={article.slug} />
               )}
-              <div id="skip-to-article" className="h-0 m-0 col-body" />
-
+              <h1 id="skip-to-article" className="m-0">
+                {article.frontmatter.enumerator}. {article.frontmatter.title}
+              </h1>
               <FrontmatterParts
                 containerClassName="col-body"
                 parts={parts}
