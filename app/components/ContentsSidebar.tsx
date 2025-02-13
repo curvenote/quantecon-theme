@@ -18,7 +18,7 @@ function Section({ group }: { group: HeadingGroup }) {
     <ul>
       {group.map((heading) => (
         <li
-          className="my-[6px] font-light text-qetext-light opacity-80"
+          className="my-[6px] font-light text-qetext-light dark:text-qetext-dark opacity-80 dark:bg-opacity-100"
           key={heading.slug ?? heading.title}
         >
           {heading.slug ? (
@@ -85,10 +85,8 @@ export function ContentsSidebar() {
       )}
       style={{ top: '50px' }}
     >
-      <div className="mb-4 text-lg font-bold text-qetext-light dark:text-qetoolbar-dark">
-        Contents
-      </div>
-      <nav>
+      <div className="mb-4 text-lg font-bold text-qetext-light dark:text-qetext-dark">Contents</div>
+      <nav className="text-qetext-light">
         {headings?.map((headingOrGroup) => {
           if (Array.isArray(headingOrGroup))
             return (
@@ -99,7 +97,7 @@ export function ContentsSidebar() {
             );
           return (
             <p
-              className="mt-5 mb-4 text-lg font-semibold text-qetext-light"
+              className="mt-5 mb-4 text-lg font-semibold text-qetext-light dark:text-qetext-dark"
               key={headingOrGroup.slug ?? headingOrGroup.title}
             >
               {headingOrGroup.title}

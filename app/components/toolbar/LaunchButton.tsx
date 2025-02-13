@@ -48,7 +48,7 @@ function LaunchPanel() {
   return (
     <div className="p-3 space-y-3">
       <div className="text-lg">Notebook Launcher</div>
-      <p className="text-sm text-qetext-light/80">
+      <p className="text-sm text-opacity-80">
         Choose public or private cloud service for "Launch" button.
       </p>
       <p className="text-sm border-b-[1px] border-b-qetoolbar-border">Select a server</p>
@@ -78,7 +78,7 @@ function LaunchPanel() {
           <div>Private</div>
           <input
             type="text"
-            className="w-full p-1 border rounded-xs border-qetoolbar-border text-qetext-light dark:text-qetext-dark"
+            className="w-full p-1 border dark:bg-qetoolbar-dark rounded-xs border-qetoolbar-border text-qetext-light dark:text-qetext-dark"
             placeholder="Service URL/Endpoint"
             value={privateServiceUrl}
             onChange={(e) => setPrivateServiceUrl(e.target.value)}
@@ -87,7 +87,7 @@ function LaunchPanel() {
       </RadioGroup.Root>
       <button
         disabled={!service || (service === 'private' && !privateServiceUrl)}
-        className="w-full p-1 font-light text-white bg-qeborder-blue/80 hover:bg-qeborder-blue/90 active:bg-qeborder-blue/100 disabled:bg-qetoolbar-border"
+        className="w-full p-1 font-light text-white bg-qeborder-blue/80 hover:bg-qeborder-blue/90 active:bg-qeborder-blue/100 dark:disabled:bg-qetoolbar-dark/90 disabled:bg-qetoolbar-border"
         onClick={handleLaunch}
       >
         Launch Notebook
@@ -100,19 +100,28 @@ export function LaunchButton({ size }: { size: number }) {
   return (
     <Popover.Root>
       <Popover.Trigger className="cursor-pointer" asChild>
-        <CirclePlay className="hover:scale-110" width={size} height={size} tabIndex={0} />
+        <CirclePlay
+          className="opacity-90 hover:scale-110"
+          width={size}
+          height={size}
+          tabIndex={0}
+        />
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
+          sideOffset={3}
           className={`
-            z-10 w-[360px] rounded bg-white p-5
+            z-10 w-[360px] rounded bg-white dark:bg-qepage-dark p-5
+            text-qetext-light dark:text-qetext-dark
             will-change-[transform,opacity]
             shadow-md
+            dark:shadow-sm
+            dark:shadow-white/80
             ring-0
             has(:focus-visible):ring-1
             `}
         >
-          <Popover.Arrow className="shadow-md stroke-2 fill-white dark:fill-qepage-dark stroke-qetoolbar-border" />
+          <Popover.Arrow className="shadow-md stroke-2 fill-white dark:fill-qepage-dark" />
           <LaunchPanel />
         </Popover.Content>
       </Popover.Portal>

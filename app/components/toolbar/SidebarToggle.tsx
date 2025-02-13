@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 export function SidebarToggle() {
   const [open, setOpen] = useNavOpen();
   return (
-    <div className="relative w-6 h-6 cursor-pointer" onClick={() => setOpen(!open)}>
+    <div className="relative w-6 h-6 cursor-pointer opacity-90" onClick={() => setOpen(!open)}>
       <X
         className={classNames('absolute transition-all duration-300 ease-in-out hover:scale-110', {
           'opacity-0': !open,

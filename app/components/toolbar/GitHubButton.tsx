@@ -12,13 +12,13 @@ export function GitHubButton() {
         <img
           src="/logos/github-mark-white.svg"
           alt="Github Logo"
-          className="h-5 opacity-80 hover:scale-110"
+          className="h-5 opacity-90 hover:scale-110"
         />
       ) : (
         <img
           src="/logos/github-mark.svg"
           alt="Github Logo"
-          className="h-5 opacity-80 hover:scale-110"
+          className="h-5 opacity-90 hover:scale-110"
         />
       )}
     </>

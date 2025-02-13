@@ -42,16 +42,21 @@ export function DownloadsButton({ size }: { size: number }) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild className="cursor-pointer">
-        <CloudDownload className="hover:scale-110" width={size} height={size} tabIndex={0} />
+        <CloudDownload
+          className="opacity-90 hover:scale-110"
+          width={size}
+          height={size}
+          tabIndex={0}
+        />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
           sideOffset={5}
-          // side="bottom"
           className={`
-            cursor-pointer min-w-max rounded-md bg-white dark:bg-qepage-dark shadow-md 
-            border-[1px] p-2 space-y-1 z-10 
+            cursor-pointer min-w-max rounded-md bg-white 
+            dark:bg-qepage-dark shadow-md dark:shadow-sm dark:shadow-white/70
+            p-2 space-y-1 z-10 
             text-qetext-light dark:text-qetext-dark 
             will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade 
             `}

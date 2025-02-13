@@ -28,7 +28,7 @@ export function Toolbar() {
         </li>
         <li>
           <Link to="/">
-            <House className="hover:scale-110" width={iconSize} height={iconSize} />
+            <House className="opacity-90 hover:scale-110" width={iconSize} height={iconSize} />
           </Link>
         </li>
         <li>
