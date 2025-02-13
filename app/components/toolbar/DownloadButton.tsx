@@ -26,7 +26,7 @@ function DownloadItem({
 
 export function DownloadsButton({ size }: { size: number }) {
   const project = useProjectManifest();
-  const data = usePage();
+  const page = usePage();
 
   const handleDownload = async (d: SiteExport | SiteAction) => {
     const fallback =
@@ -36,13 +36,13 @@ export function DownloadsButton({ size }: { size: number }) {
 
   const downloads: SiteAction[] = [
     ...(project?.downloads ?? []),
-    ...(data.page?.frontmatter?.downloads ?? []),
+    ...(page?.frontmatter?.downloads ?? []),
   ];
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild className="cursor-pointer">
-        <CloudDownload className="hover:scale-110" width={size} height={size} />
+        <CloudDownload className="hover:scale-110" width={size} height={size} tabIndex={0} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
@@ -50,13 +50,13 @@ export function DownloadsButton({ size }: { size: number }) {
           sideOffset={5}
           // side="bottom"
           className={`
-            cursor-pointer min-w-max rounded-md bg-white dark:bg-qepage-dark border-qetoolbar-border 
+            cursor-pointer min-w-max rounded-md bg-white dark:bg-qepage-dark shadow-md 
             border-[1px] p-2 space-y-1 z-10 
             text-qetext-light dark:text-qetext-dark 
             will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade 
             `}
         >
-          <DropdownMenu.Arrow className="stroke-2 fill-white dark:fill-qepage-dark stroke-qetoolbar-border" />
+          <DropdownMenu.Arrow className="shadow-md stroke-2 fill-white dark:fill-qepage-dark" />
           {downloads.map((d, i) => (
             <DownloadItem key={`${i}-${d.url}`} onSelect={(e) => handleDownload(d)}>
               {d.title}

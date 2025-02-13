@@ -10,7 +10,7 @@ export function ThemeButton({ className }: { className?: string }) {
       aria-label="Chage contrast"
       onClick={nextTheme}
     >
-      <Sunset className="hover:scale-110" />
+      <Sunset className="w-5 h-5 hover:scale-110" />
     </button>
   );
 }

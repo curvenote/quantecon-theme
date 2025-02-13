@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { LoadingBar } from '@myst-theme/site';
 import { Search } from '@myst-theme/site/src/components/Navigation/Search';
-import { CircleMinus, CirclePlay, CirclePlus, House, Maximize } from 'lucide-react';
+import { CircleMinus, CirclePlus, House, Maximize } from 'lucide-react';
 import { Link } from '@remix-run/react';
-import { SidebarToggle } from './buttons/SidebarToggle';
-import { QuantEconButton } from './buttons/QuantEconButton';
-import { ThemeButton } from './buttons/ThemeButton';
-import { DownloadsButton } from './buttons/DownloadButton';
-import { GitHubButton } from './buttons/GitHubButton';
+import { SidebarToggle } from './SidebarToggle';
+import { QuantEconButton } from './QuantEconButton';
+import { ThemeButton } from './ThemeButton';
+import { DownloadsButton } from './DownloadButton';
+import { GitHubButton } from './GitHubButton';
+import { LaunchButton } from './LaunchButton';
 
 export function Toolbar() {
   const iconSize = 20;
@@ -45,13 +46,13 @@ export function Toolbar() {
           <CircleMinus className="opacity-60" width={iconSize} height={iconSize} />
         </li>
         <li className="flex items-center pr-[36px]">
-          <ThemeButton className="w-6 h-6 opacity-60" />
+          <ThemeButton className="w-5 h-5 opacity-60" />
         </li>
         <li>
           <DownloadsButton size={iconSize} />
         </li>
         <li>
-          <CirclePlay width={iconSize} height={iconSize} />
+          <LaunchButton size={iconSize} />
         </li>
         <li>
           <GitHubButton />

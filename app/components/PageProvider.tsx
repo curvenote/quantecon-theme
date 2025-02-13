@@ -13,5 +13,5 @@ export function PageProvider({ page, children }: React.PropsWithChildren<{ page?
 }
 
 export function usePage() {
-  return React.useContext(PageContext);
+  return React.useContext(PageContext).page;
 }

@@ -1,11 +1,10 @@
 import { useThemeSwitcher } from '@myst-theme/providers';
-import { Link } from 'lucide-react';
 import { usePage } from '~/components/PageProvider';
 
 export function GitHubButton() {
   const { isDark } = useThemeSwitcher();
-  const data = usePage();
-  const editUrl = data?.page?.frontmatter?.edit_url;
+  const page = usePage();
+  const editUrl = page?.frontmatter?.edit_url;
 
   const logo = (
     <>
@@ -27,7 +26,7 @@ export function GitHubButton() {
 
   return (
     <span className="cursor-pointer">
-      {editUrl && <Link to={editUrl}>{logo}</Link>}
+      {editUrl && <a href={editUrl}>{logo}</a>}
       {!editUrl && logo}
     </span>
   );
