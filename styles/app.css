@@ -16,6 +16,7 @@
   /* Ensure direct children in the grid don't have unwanted margins */
   .simple-center-grid > * {
     margin-top: 0 !important;
+    @apply col-body;
   }
 
   .simple-center-grid > .col-margin {
