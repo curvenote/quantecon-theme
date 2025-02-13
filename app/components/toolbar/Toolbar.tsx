@@ -2,14 +2,12 @@ import classNames from 'classnames';
 import { LoadingBar } from '@myst-theme/site';
 import { Search } from '@myst-theme/site/src/components/Navigation/Search';
 import { CircleMinus, CirclePlay, CirclePlus, House, Maximize } from 'lucide-react';
-import {
-  DownloadsButton,
-  GitHubButton,
-  QuantEconButton,
-  SidebarToggle,
-  ThemeButton,
-} from './buttons';
 import { Link } from '@remix-run/react';
+import { SidebarToggle } from './buttons/SidebarToggle';
+import { QuantEconButton } from './buttons/QuantEconButton';
+import { ThemeButton } from './buttons/ThemeButton';
+import { DownloadsButton } from './buttons/DownloadButton';
+import { GitHubButton } from './buttons/GitHubButton';
 
 export function Toolbar() {
   const iconSize = 20;
@@ -27,7 +25,7 @@ export function Toolbar() {
         </li>
         <li>
           <Link to="/">
-            <House width={iconSize} height={iconSize} />
+            <House className="hover:scale-110" width={iconSize} height={iconSize} />
           </Link>
         </li>
         <li>
