@@ -5,7 +5,10 @@ import { Menu, X } from 'lucide-react';
 export function SidebarToggle() {
   const [open, setOpen] = useNavOpen();
   return (
-    <div className="relative w-6 h-6 cursor-pointer opacity-90" onClick={() => setOpen(!open)}>
+    <button
+      className="relative flex items-center w-6 h-6 cursor-pointer opacity-90"
+      onClick={() => setOpen(!open)}
+    >
       <X
         className={classNames('absolute transition-all duration-300 ease-in-out hover:scale-110', {
           'opacity-0': !open,
@@ -13,6 +16,7 @@ export function SidebarToggle() {
         })}
         width={24}
         height={24}
+        aria-label="Show table of contents"
       />
       <Menu
         className={classNames('absolute transition-all duration-300 ease-in-out hover:scale-110', {
@@ -21,7 +25,8 @@ export function SidebarToggle() {
         })}
         width={24}
         height={24}
+        aria-label="Hide table of contents"
       />
-    </div>
+    </button>
   );
 }

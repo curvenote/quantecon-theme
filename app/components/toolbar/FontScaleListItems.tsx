@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { CircleMinus, CirclePlus } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { Tooltip } from './Tooltip';
 
 export function FontScaleListItems({ scale, size }: { scale: string; size: number }) {
   const fontSizes = useMemo(() => {
@@ -35,11 +36,13 @@ export function FontScaleListItems({ scale, size }: { scale: string; size: numbe
           className="flex items-center cursor-pointer"
           disabled={current === 2}
         >
-          <CirclePlus
-            className={current === 2 ? 'opacity-100' : 'opacity-70 hover:scale-110 '}
-            width={current === 2 ? 1.2 * size : size}
-            height={current === 2 ? 1.2 * size : size}
-          />
+          <Tooltip label="Increase font size">
+            <CirclePlus
+              className={current === 2 ? 'opacity-100' : 'opacity-70 hover:scale-110 '}
+              width={current === 2 ? 1.2 * size : size}
+              height={current === 2 ? 1.2 * size : size}
+            />
+          </Tooltip>
         </button>
       </li>
       <li>
@@ -48,11 +51,13 @@ export function FontScaleListItems({ scale, size }: { scale: string; size: numbe
           className="flex items-center cursor-pointer"
           disabled={current === 0}
         >
-          <CircleMinus
-            className={current === 0 ? 'opacity-100' : 'opacity-70 hover:scale-110 '}
-            width={current === 0 ? 1.2 * size : size}
-            height={current === 0 ? 1.2 * size : size}
-          />
+          <Tooltip label="Reduce font size">
+            <CircleMinus
+              className={current === 0 ? 'opacity-100' : 'opacity-70 hover:scale-110 '}
+              width={current === 0 ? 1.2 * size : size}
+              height={current === 0 ? 1.2 * size : size}
+            />
+          </Tooltip>
         </button>
       </li>
     </>

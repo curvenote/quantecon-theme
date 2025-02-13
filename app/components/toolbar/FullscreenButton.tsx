@@ -1,5 +1,6 @@
 import { Maximize, Minimize } from 'lucide-react';
 import { useCallback, useState } from 'react';
+import { Tooltip } from './Tooltip';
 
 export function FullScreenButton({ size }: { size: number }) {
   const [fullScreen, setFullScreen] = useState(false);
@@ -13,23 +14,17 @@ export function FullScreenButton({ size }: { size: number }) {
     }
   }, []);
   return (
-    <>
+    <button onClick={handleFullscreen} className="flex items-center cursor-pointer">
       {fullScreen && (
-        <Minimize
-          className="cursor-pointer opacity-60 hover:scale-110"
-          width={size}
-          height={size}
-          onClick={handleFullscreen}
-        />
+        <Tooltip label="Reset Full Screen">
+          <Minimize className="opacity-60 hover:scale-110" width={size} height={size} />
+        </Tooltip>
       )}
       {!fullScreen && (
-        <Maximize
-          className="cursor-pointer opacity-60 hover:scale-110"
-          width={size}
-          height={size}
-          onClick={handleFullscreen}
-        />
+        <Tooltip label="Full Screen">
+          <Maximize className=" opacity-60 hover:scale-110" width={size} height={size} />
+        </Tooltip>
       )}
-    </>
+    </button>
   );
 }

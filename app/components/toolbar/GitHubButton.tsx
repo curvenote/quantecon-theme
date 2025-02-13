@@ -1,5 +1,6 @@
 import { useThemeSwitcher } from '@myst-theme/providers';
 import { usePage } from '~/components/PageProvider';
+import { Tooltip } from './Tooltip';
 
 export function GitHubButton() {
   const { isDark } = useThemeSwitcher();
@@ -26,7 +27,11 @@ export function GitHubButton() {
 
   return (
     <span className="cursor-pointer">
-      {editUrl && <a href={editUrl}>{logo}</a>}
+      {editUrl && (
+        <a href={editUrl}>
+          <Tooltip label="Edit on GitHub">{logo}</Tooltip>
+        </a>
+      )}
       {!editUrl && logo}
     </span>
   );

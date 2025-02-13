@@ -4,6 +4,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { CloudDownload } from 'lucide-react';
 import type { SiteAction, SiteExport } from 'myst-config';
 import { usePage } from '~/components/PageProvider';
+import { Tooltip } from './Tooltip';
 
 function DownloadItem({
   children,
@@ -41,13 +42,15 @@ export function DownloadsButton({ size }: { size: number }) {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild className="cursor-pointer">
-        <CloudDownload
-          className="opacity-90 hover:scale-110"
-          width={size}
-          height={size}
-          tabIndex={0}
-        />
+      <DropdownMenu.Trigger className="flex items-center cursor-pointer">
+        <Tooltip label="Downloads">
+          <CloudDownload
+            className="opacity-90 hover:scale-110"
+            width={size}
+            height={size}
+            tabIndex={0}
+          />
+        </Tooltip>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
@@ -55,7 +58,7 @@ export function DownloadsButton({ size }: { size: number }) {
           sideOffset={5}
           className={`
             cursor-pointer min-w-max rounded-md bg-white 
-            dark:bg-qepage-dark shadow-md dark:shadow-sm dark:shadow-white/70
+            dark:bg-qepage-dark shadow-md dark:shadow-sm dark:shadow-white/20
             p-2 space-y-1 z-10 
             text-qetext-light dark:text-qetext-dark 
             will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade 

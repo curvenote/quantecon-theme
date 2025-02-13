@@ -4,6 +4,7 @@ import * as RadioGroup from '@radix-ui/react-radio-group';
 import { CirclePlay } from 'lucide-react';
 import React from 'react';
 import { usePage } from '../PageProvider';
+import { Tooltip } from './Tooltip';
 
 const COLAB_BASE_URL = 'https://colab.research.google.com/github/';
 const GITHUB_REPO_SUFFIX = '.notebooks';
@@ -99,13 +100,15 @@ function LaunchPanel() {
 export function LaunchButton({ size }: { size: number }) {
   return (
     <Popover.Root>
-      <Popover.Trigger className="cursor-pointer" asChild>
-        <CirclePlay
-          className="opacity-90 hover:scale-110"
-          width={size}
-          height={size}
-          tabIndex={0}
-        />
+      <Popover.Trigger className="flex items-center cursor-pointer">
+        <Tooltip label="Launch Notebook">
+          <CirclePlay
+            className="opacity-90 hover:scale-110"
+            width={size}
+            height={size}
+            tabIndex={0}
+          />
+        </Tooltip>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
@@ -116,7 +119,7 @@ export function LaunchButton({ size }: { size: number }) {
             will-change-[transform,opacity]
             shadow-md
             dark:shadow-sm
-            dark:shadow-white/80
+            dark:shadow-white/20
             ring-0
             has(:focus-visible):ring-1
             `}

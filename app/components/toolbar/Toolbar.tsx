@@ -11,6 +11,7 @@ import { GitHubButton } from './GitHubButton';
 import { LaunchButton } from './LaunchButton';
 import { FullScreenButton } from './FullscreenButton';
 import { FontScaleListItems } from './FontScaleListItems';
+import { Tooltip } from './Tooltip';
 
 export function Toolbar() {
   const iconSize = 20;
@@ -28,7 +29,9 @@ export function Toolbar() {
         </li>
         <li>
           <Link to="/">
-            <House className="opacity-90 hover:scale-110" width={iconSize} height={iconSize} />
+            <Tooltip label="Home">
+              <House className="opacity-90 hover:scale-110" width={iconSize} height={iconSize} />
+            </Tooltip>
           </Link>
         </li>
         <li>
