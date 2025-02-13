@@ -45,7 +45,13 @@ export function ProjectFrontmatter({
           {authors.reduce<React.ReactNode>((acc, a, i, authors) => {
             let chunk: React.ReactNode = a.name;
             if (a.url) {
-              chunk = <Author className="text-sky-500" author={a} affiliations={affiliations} />;
+              chunk = (
+                <Author
+                  className="text-[102%] font-[400] text-sky-500"
+                  author={a}
+                  affiliations={affiliations}
+                />
+              );
             }
             if (i > 0 && i < authors.length - 1) {
               chunk = <>, {chunk}</>;

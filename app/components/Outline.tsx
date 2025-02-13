@@ -47,7 +47,7 @@ export function Outline({
             <p className="mb-4 text-lg font-bold text-opacity-100 dark:text-qetext-dark">
               On this page
             </p>
-            <ul className="space-y-2 not-prose">
+            <ul className="space-y-2 font-light not-prose">
               {headings.map((h, i) => (
                 <li key={`outline-li-${h.id}`}>
                   <Link to={`#${h.id}`}>

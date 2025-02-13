@@ -10,6 +10,8 @@ module.exports = {
         ...mystTheme.themeExtensions.typography,
         DEFAULT: {
           css: {
+            fontSize: '1.125rem',
+            fontWeight: '400',
             a: {
               color: 'rgb(0 73 121 / 0.8)',
               fontWeight: 'inherit',
