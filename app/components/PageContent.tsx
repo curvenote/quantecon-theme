@@ -52,6 +52,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
                 projectTitle={manifest?.title ?? 'Project Title'}
                 pageTitle={manifest?.index !== article.slug ? article.frontmatter.title : undefined}
                 authors={article.frontmatter.authors}
+                affiliations={article.frontmatter.affiliations}
               />
               <Outline
                 containerClassName="hidden lg:col-margin"

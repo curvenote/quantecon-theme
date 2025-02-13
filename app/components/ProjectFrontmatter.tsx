@@ -1,6 +1,7 @@
 import { Link } from '@remix-run/react';
 import classNames from 'classnames';
-import type { Contributor } from 'myst-frontmatter';
+import { Author } from '@myst-theme/frontmatter';
+import type { Affiliation, Contributor } from 'myst-frontmatter';
 import React from 'react';
 
 export function ProjectFrontmatter({
@@ -8,11 +9,13 @@ export function ProjectFrontmatter({
   projectTitle,
   pageTitle,
   authors,
+  affiliations,
 }: {
   className?: string;
   projectTitle: string;
   pageTitle?: string;
   authors?: Contributor[];
+  affiliations?: Affiliation[];
 }) {
   return (
     <div
@@ -42,11 +45,7 @@ export function ProjectFrontmatter({
           {authors.reduce<React.ReactNode>((acc, a, i, authors) => {
             let chunk: React.ReactNode = a.name;
             if (a.url) {
-              chunk = (
-                <Link to={a.url} className="font-normal no-underline hover:underline text-sky-500">
-                  {chunk}
-                </Link>
-              );
+              chunk = <Author className="text-sky-500" author={a} affiliations={affiliations} />;
             }
             if (i > 0 && i < authors.length - 1) {
               chunk = <>, {chunk}</>;
