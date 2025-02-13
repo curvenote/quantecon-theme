@@ -1,8 +1,14 @@
 import classNames from 'classnames';
 import { LoadingBar } from '@myst-theme/site';
 import { Search } from '@myst-theme/site/src/components/Navigation/Search';
-import { CircleMinus, CirclePlay, CirclePlus, CloudDownload, House, Maximize } from 'lucide-react';
-import { GitHubButton, QuantEconButton, SidebarToggle, ThemeButton } from './buttons';
+import { CircleMinus, CirclePlay, CirclePlus, House, Maximize } from 'lucide-react';
+import {
+  DownloadsButton,
+  GitHubButton,
+  QuantEconButton,
+  SidebarToggle,
+  ThemeButton,
+} from './buttons';
 import { Link } from '@remix-run/react';
 
 export function Toolbar() {
@@ -44,7 +50,7 @@ export function Toolbar() {
           <ThemeButton className="w-6 h-6 opacity-60" />
         </li>
         <li>
-          <CloudDownload width={iconSize} height={iconSize} />
+          <DownloadsButton size={iconSize} />
         </li>
         <li>
           <CirclePlay width={iconSize} height={iconSize} />

@@ -7,6 +7,7 @@ import { ComputeOptionsProvider, ThebeLoaderAndServer } from '@myst-theme/jupyte
 import { PageContent } from '~/components/PageContent';
 import type { TemplateOptions } from '~/types';
 import { NavigationAndArticleWrapper } from './NavigationAndArticleWrapper';
+import { PageProvider } from './PageProvider';
 
 type ManifestProject = Required<SiteManifest>['projects'][0];
 
@@ -27,25 +28,23 @@ export function Page() {
   return (
     <div className="relative bg-white dark:bg-qepage-dark">
       <ProjectProvider project={data.project}>
-        <NavigationAndArticleWrapper
-          hide_toc={hide_toc}
-          hideSearch={hide_search}
-          projectSlug={data.page.project}
-        >
-          <ComputeOptionsProvider
-            features={{
-              notebookCompute: true,
-              figureCompute: true,
-              launchBinder: false,
-            }}
-          >
-            <ThebeLoaderAndServer baseurl={baseurl}>
-              <main className="pt-[72px]" ref={container}>
-                <PageContent article={data.page} />
-              </main>
-            </ThebeLoaderAndServer>
-          </ComputeOptionsProvider>
-        </NavigationAndArticleWrapper>
+        <PageProvider page={data.page}>
+          <NavigationAndArticleWrapper hide_toc={hide_toc} hideSearch={hide_search}>
+            <ComputeOptionsProvider
+              features={{
+                notebookCompute: true,
+                figureCompute: true,
+                launchBinder: false,
+              }}
+            >
+              <ThebeLoaderAndServer baseurl={baseurl}>
+                <main className="pt-[72px]" ref={container}>
+                  <PageContent article={data.page} />
+                </main>
+              </ThebeLoaderAndServer>
+            </ComputeOptionsProvider>
+          </NavigationAndArticleWrapper>
+        </PageProvider>
       </ProjectProvider>
     </div>
   );

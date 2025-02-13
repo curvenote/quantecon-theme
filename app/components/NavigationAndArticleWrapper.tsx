@@ -9,7 +9,6 @@ function NavigationAndArticleWrapperInternal({
 }: {
   hide_toc?: boolean;
   hideSearch?: boolean;
-  projectSlug?: string;
   children: React.ReactNode;
   inset?: number;
 }) {
@@ -32,12 +31,10 @@ export function NavigationAndArticleWrapper({
   children,
   hide_toc,
   hideSearch,
-  projectSlug,
   inset = 20, // begin text 20px from the top (aligned with menu)
 }: {
   hide_toc?: boolean;
   hideSearch?: boolean;
-  projectSlug?: string;
   children: React.ReactNode;
   inset?: number;
 }) {
@@ -47,7 +44,6 @@ export function NavigationAndArticleWrapper({
         children={children}
         hide_toc={hide_toc}
         hideSearch={hideSearch}
-        projectSlug={projectSlug}
         inset={inset}
       />
     </UiStateProvider>
