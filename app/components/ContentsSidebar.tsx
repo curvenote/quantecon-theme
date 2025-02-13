@@ -75,7 +75,7 @@ export function ContentsSidebar() {
       ref={toc}
       className={classNames(
         'fixed top-0 left-0',
-        'w-[250px] 2xl:w-[350px]',
+        'w-[350px] lg:w-[250px] 2xl:w-[350px]',
         'h-screen w-[250px] z-[20] pt-[40px] pb-[90px] px-9',
         'bg-qetoolbar-light dark:bg-qetoolbar-dark ',
         'border-r-[1px] border-qetoolbar-border',
