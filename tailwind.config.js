@@ -33,7 +33,8 @@ module.exports = {
       },
       gridTemplateColumns: {
         ...mystTheme.themeExtensions.gridTemplateColumns,
-        'simple-sm': '[screen-start] 1fr [body-start] 800px [body-end] 1fr [screen-end]',
+        'simple-sm':
+          '[screen-start] 1fr [body-start] minmax(300px, 800px) [body-end] 1fr [screen-end]',
         'simple-xl':
           '[screen-start] 1fr 200px 20px [body-start] 800px [body-end] 20px [margin-start] 200px [margin-end] 1fr [screen-end]', // Two-column layout at large screens
       },
