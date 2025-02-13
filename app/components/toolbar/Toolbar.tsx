@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { LoadingBar } from '@myst-theme/site';
 import { Search } from '@myst-theme/site/src/components/Navigation/Search';
-import { CircleMinus, CirclePlus, House, Maximize } from 'lucide-react';
+import { CircleMinus, CirclePlus, House } from 'lucide-react';
 import { Link } from '@remix-run/react';
 import { SidebarToggle } from './SidebarToggle';
 import { QuantEconButton } from './QuantEconButton';
@@ -9,6 +9,7 @@ import { ThemeButton } from './ThemeButton';
 import { DownloadsButton } from './DownloadButton';
 import { GitHubButton } from './GitHubButton';
 import { LaunchButton } from './LaunchButton';
+import { FullScreenButton } from './FullscreenButton';
 
 export function Toolbar() {
   const iconSize = 20;
@@ -37,7 +38,7 @@ export function Toolbar() {
           <Search />
         </li>
         <li>
-          <Maximize className="opacity-60" width={iconSize} height={iconSize} />
+          <FullScreenButton size={iconSize} />
         </li>
         <li>
           <CirclePlus className="opacity-60" width={iconSize} height={iconSize} />
