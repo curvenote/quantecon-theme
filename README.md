@@ -68,10 +68,6 @@ myst start
 
 Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
 
-## Deployment
-
-To deploy this theme see the [MyST Deployment Documentation](https://mystmd.org/guide/deployment).
-
 ## Development
 
 To run a local development server:
@@ -81,3 +77,13 @@ cd quantecon-theme
 npm install
 npm run dev
 ```
+
+## Release
+
+To bundle and release this theme run:
+
+```sh
+make deploy
+```
+
+This will build a bundled version of the theme and push to the repository at https://github.com/curvenote-themes/quantecon.
