@@ -25,7 +25,7 @@ function DownloadItem({
   );
 }
 
-export function DownloadsButton({ size }: { size: number }) {
+export function DownloadsButton({ size, showLabel }: { size: number; showLabel?: boolean }) {
   const project = useProjectManifest();
   const page = usePage();
 
@@ -50,6 +50,7 @@ export function DownloadsButton({ size }: { size: number }) {
             height={size}
             tabIndex={0}
           />
+          {showLabel && <span className="ml-2">Downloads</span>}
         </Tooltip>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

@@ -3,7 +3,7 @@ import { CircleMinus, CirclePlus } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Tooltip } from './Tooltip';
 
-export function FontScaleListItems({ scale, size }: { scale: string; size: number }) {
+export function FontScaleListItems({ className, size }: { className: string; size: number }) {
   const fontSizes = useMemo(() => {
     if (typeof document === 'undefined') return [] as string[];
     return ['0.9rem', document.documentElement.style.fontSize, '1.1rem'];
@@ -30,7 +30,7 @@ export function FontScaleListItems({ scale, size }: { scale: string; size: numbe
 
   return (
     <>
-      <li>
+      <li className={className}>
         <button
           onClick={increment}
           className="flex items-center cursor-pointer"
@@ -45,7 +45,7 @@ export function FontScaleListItems({ scale, size }: { scale: string; size: numbe
           </Tooltip>
         </button>
       </li>
-      <li>
+      <li className={className}>
         <button
           onClick={decrement}
           className="flex items-center cursor-pointer"

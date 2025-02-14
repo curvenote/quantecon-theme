@@ -38,7 +38,7 @@ export function Page() {
               }}
             >
               <ThebeLoaderAndServer baseurl={baseurl}>
-                <main className="pt-[72px]" ref={container}>
+                <main className="pt-[72px] px-2" ref={container}>
                   <PageContent article={data.page} />
                 </main>
               </ThebeLoaderAndServer>

@@ -97,7 +97,7 @@ function LaunchPanel() {
   );
 }
 
-export function LaunchButton({ size }: { size: number }) {
+export function LaunchButton({ size, showLabel }: { size: number; showLabel?: boolean }) {
   return (
     <Popover.Root>
       <Popover.Trigger className="flex items-center cursor-pointer">
@@ -108,6 +108,7 @@ export function LaunchButton({ size }: { size: number }) {
             height={size}
             tabIndex={0}
           />
+          {showLabel && <span className="ml-2">Launch</span>}
         </Tooltip>
       </Popover.Trigger>
       <Popover.Portal>
