@@ -1,33 +1,25 @@
 jtex: v1
-title: Book Theme
-description: Simple site for displaying multiple articles and notebooks with a table of contents.
+title: QuantEcon
+description: A dedicated theme for the QuantEcon course materials
 version: 1.0.0
 license: MIT
-source: https://github.com/executablebooks/myst-book-theme
+source: https://github.com/curvenote-themes/quantecon
 thumbnail: ./thumbnail.png
 authors:
+  - name: Steve Purves
+    website: https://curvenote.com
+    affiliations:
+      - Curvenote
   - name: Rowan Cockett
     website: https://curvenote.com
     affiliations:
       - Curvenote
 tags:
   - book
+  - course
 parts:
   - id: footer
     description: The site wide footer
-options:
-  - type: file
-    id: favicon
-    description: Local path to favicon image
-  - type: file
-    id: logo
-    description: Local path to logo image
-  - type: file
-    id: logo_dark
-    description: Local path to logo image for dark mode
-  - type: string
-    id: logo_text
-    description: Short text to display next to logo at the top of all pages
 build:
   install: npm install
   start: npm run start
