@@ -1,12 +1,17 @@
-# A QuantEcon Book for Myst Markdown
-
-![](./thumbnail.png)
+<div style="display: flex; align-items: center;">
+<h1 style="flex-grow: 1; margin-right: 12px;">A QuantEcon Book for Myst Markdown</h1>
+<div style="justify-content: flex-end">
+<img src="./qe-logo.png" style="height: 80px"/>
+</div>
+</div>
 
 A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 
 - Responsive and mobile ready
 - Page Footer based on MyST Content
 - Bundled QuantEcon brand assets
+
+![](./thumbnail.png)
 
 ### Downloads
 

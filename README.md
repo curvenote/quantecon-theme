@@ -1,12 +1,12 @@
 # A QuantEcon Book for Myst Markdown
 
-![](./thumbnail.png)
-
 A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 
 - Responsive and mobile ready
 - Page Footer based on MyST Content
 - Bundled QuantEcon brand assets
+
+![](./template/thumbnail.png)
 
 ### Downloads
 
