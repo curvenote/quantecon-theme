@@ -1,4 +1,9 @@
-# A QuantEcon Book for Myst Markdown
+<div style="display: flex; align-items: center;">
+<h1 style="flex-grow: 1; margin-right: 12px;">A QuantEcon Book for Myst Markdown</h1>
+<div style="justify-content: flex-end">
+<img src="./qe-logo.png" style="height: 80px"/>
+</div>
+</div>
 
 A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 
@@ -6,7 +11,7 @@ A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 - Page Footer based on MyST Content
 - Bundled QuantEcon brand assets
 
-![](./template/thumbnail.png)
+![](./thumbnail.png)
 
 ### Downloads
 
@@ -57,7 +62,7 @@ To use this template locally, update your site template make sure your project's
 
 ```sh
 site:
-  template: @curvenote-themes/quantecon
+  template: https://github.com/@curvenote-themes/quantecon
 ```
 
 Then start the local server:
@@ -68,22 +73,6 @@ myst start
 
 Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
 
-## Development
+## Deployment
 
-To run a local development server:
-
-```sh
-cd quantecon-theme
-npm install
-npm run dev
-```
-
-## Release
-
-To bundle and release this theme run:
-
-```sh
-make deploy
-```
-
-This will build a bundled version of the theme and push to the repository at https://github.com/curvenote-themes/quantecon.
+To deploy this theme see the [MyST Deployment Documentation](https://mystmd.org/guide/deployment).

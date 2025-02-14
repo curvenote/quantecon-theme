@@ -3,20 +3,16 @@ import {
   getMetaTagsForArticle,
   responseNoArticle,
   responseNoSite,
-} from "@myst-theme/site";
-import type {
-  LinksFunction,
-  LoaderFunction,
-  V2_MetaFunction,
-} from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
-import { getConfig, getPage } from "~/backend/loaders.server";
-import type { SiteManifest } from "myst-config";
-import { getProject } from "@myst-theme/common";
+} from '@myst-theme/site';
+import type { LinksFunction, LoaderFunction, V2_MetaFunction } from '@remix-run/node';
+import { json, redirect } from '@remix-run/node';
+import { getConfig, getPage } from '~/backend/loaders.server';
+import type { SiteManifest } from 'myst-config';
+import { getProject } from '@myst-theme/common';
 
-import Page from "./$";
+import { Page } from '~/components/Page';
 
-type ManifestProject = Required<SiteManifest>["projects"][0];
+type ManifestProject = Required<SiteManifest>['projects'][0];
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data, location }) => {
   if (!data) return [];
@@ -25,7 +21,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ data, location }) => {
   const project: ManifestProject = data.project;
 
   return getMetaTagsForArticle({
-    origin: "",
+    origin: '',
     url: location.pathname,
     title: config?.title ?? project.title,
     description: config.description ?? project.description ?? undefined,
