@@ -57,7 +57,7 @@ To use this template locally, update your site template make sure your project's
 
 ```sh
 site:
-  template: @curvenote-themes/quantecon
+  template: https://github.com/curvenote-themes/quantecon/archive/refs/heads/main.zip
 ```
 
 Then start the local server:

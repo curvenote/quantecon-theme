@@ -1,9 +1,4 @@
-<div style="display: flex; align-items: center;">
-<h1 style="flex-grow: 1; margin-right: 12px;">A QuantEcon Book for Myst Markdown</h1>
-<div style="justify-content: flex-end">
-<img src="./qe-logo.png" style="height: 80px"/>
-</div>
-</div>
+# QuantEcon Theme for Myst Markdown
 
 A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 
@@ -62,7 +57,7 @@ To use this template locally, update your site template make sure your project's
 
 ```sh
 site:
-  template: https://github.com/@curvenote-themes/quantecon
+  template: https://github.com/curvenote-themes/quantecon/archive/refs/heads/main.zip
 ```
 
 Then start the local server:
