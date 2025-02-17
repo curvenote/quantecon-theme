@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import { LoadingBar } from '@myst-theme/site';
 import { Search } from '@myst-theme/site/src/components/Navigation/Search';
-import { CircleMinus, CirclePlus, House } from 'lucide-react';
-import { Link } from '@remix-run/react';
+import { House } from 'lucide-react';
 import { SidebarToggle } from './SidebarToggle';
 import { QuantEconButton } from './QuantEconButton';
 import { ThemeButton } from './ThemeButton';
@@ -13,9 +12,10 @@ import { FullScreenButton } from './FullscreenButton';
 import { FontScaleListItems } from './FontScaleListItems';
 import { Tooltip } from './Tooltip';
 import { MobileActionsMenu } from './MobileActionsMenu';
-import { useBaseurl, withBaseurl } from '@myst-theme/providers';
+import { useBaseurl, useLinkProvider } from '@myst-theme/providers';
 
 export function Toolbar() {
+  const Link = useLinkProvider();
   const baseurl = useBaseurl();
   const iconSize = 20;
   return (

@@ -1,8 +1,8 @@
-import { useBaseurl, withBaseurl } from '@myst-theme/providers';
-import { Link } from '@remix-run/react';
+import { useBaseurl, useLinkProvider, withBaseurl } from '@myst-theme/providers';
 
 export function QuantEconButton() {
   const baseurl = useBaseurl();
+  const Link = useLinkProvider();
   return (
     <Link to="https://quantecon.org/">
       <img

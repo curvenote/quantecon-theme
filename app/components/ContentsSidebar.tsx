@@ -2,6 +2,7 @@ import type { Heading } from '@myst-theme/common';
 import { getProjectHeadings } from '@myst-theme/common';
 import {
   useBaseurl,
+  useLinkProvider,
   useNavOpen,
   useProjectManifest,
   useSiteManifest,
@@ -9,7 +10,6 @@ import {
   withBaseurl,
 } from '@myst-theme/providers';
 import { useSidebarHeight } from '@myst-theme/site';
-import { Link } from '@remix-run/react';
 import classNames from 'classnames';
 import { slugToUrl } from 'myst-common';
 
@@ -18,6 +18,7 @@ type HeadingGroup = StrictHeading[];
 
 function Section({ group }: { group: HeadingGroup }) {
   const baseurl = useBaseurl();
+  const Link = useLinkProvider();
   return (
     <ul>
       {group.map((heading) => (

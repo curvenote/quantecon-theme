@@ -1,11 +1,11 @@
-import { useBaseurl, withBaseurl } from '@myst-theme/providers';
+import { useBaseurl, useLinkProvider, withBaseurl } from '@myst-theme/providers';
 import { useHeaders } from '@myst-theme/site';
-import { Link } from '@remix-run/react';
 import classNames from 'classnames';
 import useScroll from '~/hooks/useScroll';
 
 export function BackToTop() {
   const isScrolled = useScroll(80);
+  const Link = useLinkProvider();
   return (
     <div className="fixed bottom-0 left-0 right-0 col-screen not-prose simple-center-grid grid-gap">
       <div className="relative col-margin">
@@ -34,6 +34,7 @@ export function Outline({
   innerClassName?: string;
   pageEnumerator?: string;
 }) {
+  const Link = useLinkProvider();
   const baseurl = useBaseurl();
   const { headings } = useHeaders('main h2', 3);
   return (

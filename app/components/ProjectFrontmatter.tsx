@@ -1,9 +1,8 @@
-import { Link } from '@remix-run/react';
 import classNames from 'classnames';
 import { Author } from '@myst-theme/frontmatter';
 import type { Affiliation, Contributor } from 'myst-frontmatter';
 import React from 'react';
-import { useBaseurl, withBaseurl } from '@myst-theme/providers';
+import { useBaseurl, useLinkProvider } from '@myst-theme/providers';
 
 export function ProjectFrontmatter({
   className,
@@ -19,6 +18,7 @@ export function ProjectFrontmatter({
   affiliations?: Affiliation[];
 }) {
   const baseurl = useBaseurl();
+  const Link = useLinkProvider();
   return (
     <div
       className={classNames(
