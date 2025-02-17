@@ -1,5 +1,11 @@
 # @curvenote/quantecon-book
 
+## 1.0.3
+
+### Patch Changes
+
+- c0369e8: Fix Home, Contents and ProjectHeader links
+
 ## 1.0.2
 
 ### Patch Changes
