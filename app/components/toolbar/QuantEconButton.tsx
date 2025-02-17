@@ -1,11 +1,13 @@
+import { useBaseurl, withBaseurl } from '@myst-theme/providers';
 import { Link } from '@remix-run/react';
 
 export function QuantEconButton() {
+  const baseurl = useBaseurl();
   return (
     <Link to="https://quantecon.org/">
       <img
         className="duration-300 cursor-pointer transition-scale hover:scale-110 h-7 dark:invert"
-        src="/logos/qemb-logo.png"
+        src={withBaseurl('/logos/qemb-logo.png', baseurl)}
         alt="QuantEcon Logo"
       />
     </Link>

@@ -1,4 +1,4 @@
-import { useThemeSwitcher } from '@myst-theme/providers';
+import { useBaseurl, useThemeSwitcher, withBaseurl } from '@myst-theme/providers';
 import { usePage } from '~/components/PageProvider';
 import { Tooltip } from './Tooltip';
 import classNames from 'classnames';
@@ -10,6 +10,7 @@ export function GitHubButton({
   sizeClasses: string;
   showLabel?: boolean;
 }) {
+  const baseurl = useBaseurl();
   const { isDark } = useThemeSwitcher();
   const page = usePage();
   const editUrl = page?.frontmatter?.edit_url;
@@ -18,13 +19,13 @@ export function GitHubButton({
     <>
       {isDark ? (
         <img
-          src="/logos/github-mark-white.svg"
+          src={withBaseurl('/logos/github-mark-white.svg', baseurl)}
           alt="Github Logo"
           className={classNames('opacity-90 hover:scale-110', sizeClasses)}
         />
       ) : (
         <img
-          src="/logos/github-mark.svg"
+          src={withBaseurl('/logos/github-mark.svg', baseurl)}
           alt="Github Logo"
           className={classNames('opacity-90 hover:scale-110', sizeClasses)}
         />

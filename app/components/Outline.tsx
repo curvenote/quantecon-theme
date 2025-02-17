@@ -1,3 +1,4 @@
+import { useBaseurl, withBaseurl } from '@myst-theme/providers';
 import { useHeaders } from '@myst-theme/site';
 import { Link } from '@remix-run/react';
 import classNames from 'classnames';
@@ -33,6 +34,7 @@ export function Outline({
   innerClassName?: string;
   pageEnumerator?: string;
 }) {
+  const baseurl = useBaseurl();
   const { headings } = useHeaders('main h2', 3);
   return (
     <div className={classNames('relative self-start', containerClassName)}>
@@ -61,13 +63,13 @@ export function Outline({
         <div>
           <img
             className="dark:hidden"
-            src="/logos/qe-logo.png"
+            src={withBaseurl('/logos/qe-logo.png', baseurl)}
             alt="a quantecon logo with a cancdlestick chart and text"
             width={150}
           />
           <img
             className="hidden dark:block"
-            src="/logos/quantecon-logo-transparent.png"
+            src={withBaseurl('/logos/quantecon-logo-transparent.png', baseurl)}
             alt="a quantecon logo with a cancdlestick chart and text"
             width={150}
           />
