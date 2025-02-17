@@ -1,5 +1,11 @@
 # @curvenote/quantecon-book
 
+## 1.0.4
+
+### Patch Changes
+
+- 26772b0: Fix slash issue on links
+
 ## 1.0.3
 
 ### Patch Changes
