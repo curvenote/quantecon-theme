@@ -11,6 +11,7 @@ import {
 import { useSidebarHeight } from '@myst-theme/site';
 import { Link } from '@remix-run/react';
 import classNames from 'classnames';
+import { slugToUrl } from 'myst-common';
 
 type StrictHeading = Omit<Heading, 'level'> & { level: number };
 type HeadingGroup = StrictHeading[];
@@ -25,7 +26,7 @@ function Section({ group }: { group: HeadingGroup }) {
           key={heading.slug ?? heading.title}
         >
           {heading.slug ? (
-            <Link to={withBaseurl(heading.slug, baseurl)}>
+            <Link to={withBaseurl(`/${slugToUrl(heading.slug)}`, baseurl)}>
               {heading.enumerator ? `${heading.enumerator}. ` : ''}
               {heading.title}
             </Link>

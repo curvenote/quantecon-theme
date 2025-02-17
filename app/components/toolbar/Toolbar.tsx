@@ -31,7 +31,7 @@ export function Toolbar() {
           <SidebarToggle />
         </li>
         <li>
-          <Link to={withBaseurl('/', baseurl)}>
+          <Link to={baseurl ?? '/'}>
             <Tooltip label="Home">
               <House className="opacity-90 hover:scale-110" width={iconSize} height={iconSize} />
             </Tooltip>

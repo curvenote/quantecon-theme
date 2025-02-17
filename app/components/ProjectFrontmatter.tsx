@@ -34,7 +34,7 @@ export function ProjectFrontmatter({
             'text-4xl': !pageTitle,
           })}
         >
-          <Link to={withBaseurl('/', baseurl)}>{projectTitle}</Link>
+          <Link to={baseurl ?? '/'}>{projectTitle}</Link>
         </div>
         {pageTitle && (
           <div className="block text-lg lg:inline" aria-label="Page title">
