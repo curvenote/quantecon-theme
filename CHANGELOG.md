@@ -1,5 +1,11 @@
 # @curvenote/quantecon-book
 
+## 1.0.5
+
+### Patch Changes
+
+- dd76b21: Change to link provider
+
 ## 1.0.4
 
 ### Patch Changes
