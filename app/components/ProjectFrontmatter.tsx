@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Author } from '@myst-theme/frontmatter';
 import type { Affiliation, Contributor } from 'myst-frontmatter';
 import React from 'react';
+import { useBaseurl, withBaseurl } from '@myst-theme/providers';
 
 export function ProjectFrontmatter({
   className,
@@ -17,6 +18,7 @@ export function ProjectFrontmatter({
   authors?: Contributor[];
   affiliations?: Affiliation[];
 }) {
+  const baseurl = useBaseurl();
   return (
     <div
       className={classNames(
@@ -32,7 +34,7 @@ export function ProjectFrontmatter({
             'text-4xl': !pageTitle,
           })}
         >
-          <Link to="/">{projectTitle}</Link>
+          <Link to={withBaseurl('/', baseurl)}>{projectTitle}</Link>
         </div>
         {pageTitle && (
           <div className="block text-lg lg:inline" aria-label="Page title">

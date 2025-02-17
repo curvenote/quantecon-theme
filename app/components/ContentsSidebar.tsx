@@ -1,10 +1,12 @@
 import type { Heading } from '@myst-theme/common';
 import { getProjectHeadings } from '@myst-theme/common';
 import {
+  useBaseurl,
   useNavOpen,
   useProjectManifest,
   useSiteManifest,
   useThemeTop,
+  withBaseurl,
 } from '@myst-theme/providers';
 import { useSidebarHeight } from '@myst-theme/site';
 import { Link } from '@remix-run/react';
@@ -14,6 +16,7 @@ type StrictHeading = Omit<Heading, 'level'> & { level: number };
 type HeadingGroup = StrictHeading[];
 
 function Section({ group }: { group: HeadingGroup }) {
+  const baseurl = useBaseurl();
   return (
     <ul>
       {group.map((heading) => (
@@ -22,7 +25,7 @@ function Section({ group }: { group: HeadingGroup }) {
           key={heading.slug ?? heading.title}
         >
           {heading.slug ? (
-            <Link to={heading.slug}>
+            <Link to={withBaseurl(heading.slug, baseurl)}>
               {heading.enumerator ? `${heading.enumerator}. ` : ''}
               {heading.title}
             </Link>
@@ -54,21 +57,24 @@ export function ContentsSidebar() {
   const headings = (contents ?? [])
     ?.filter((heading): heading is StrictHeading => heading.level !== 'index')
     .filter((heading) => heading.level < 3)
-    .reduce<(StrictHeading | HeadingGroup)[]>((acc, heading, idx) => {
-      if (idx === 0) {
-        return [heading];
-      } else if (heading.level === 1) {
-        return [...acc, heading];
-      }
-      const last = acc[acc.length - 1];
-      const item = heading;
-      if (Array.isArray(last)) {
-        last.push(item);
-        return acc;
-      } else {
-        return [...acc, [item]];
-      }
-    }, [] as (StrictHeading | HeadingGroup)[]);
+    .reduce<(StrictHeading | HeadingGroup)[]>(
+      (acc, heading, idx) => {
+        if (idx === 0) {
+          return [heading];
+        } else if (heading.level === 1) {
+          return [...acc, heading];
+        }
+        const last = acc[acc.length - 1];
+        const item = heading;
+        if (Array.isArray(last)) {
+          last.push(item);
+          return acc;
+        } else {
+          return [...acc, [item]];
+        }
+      },
+      [] as (StrictHeading | HeadingGroup)[]
+    );
 
   return (
     <div

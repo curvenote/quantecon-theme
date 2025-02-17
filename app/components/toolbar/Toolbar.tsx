@@ -13,8 +13,10 @@ import { FullScreenButton } from './FullscreenButton';
 import { FontScaleListItems } from './FontScaleListItems';
 import { Tooltip } from './Tooltip';
 import { MobileActionsMenu } from './MobileActionsMenu';
+import { useBaseurl, withBaseurl } from '@myst-theme/providers';
 
 export function Toolbar() {
+  const baseurl = useBaseurl();
   const iconSize = 20;
   return (
     <div
@@ -29,7 +31,7 @@ export function Toolbar() {
           <SidebarToggle />
         </li>
         <li>
-          <Link to="/">
+          <Link to={withBaseurl('/', baseurl)}>
             <Tooltip label="Home">
               <House className="opacity-90 hover:scale-110" width={iconSize} height={iconSize} />
             </Tooltip>
