@@ -47,8 +47,8 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
           <ExecuteScopeProvider enable={compute?.enabled ?? false} contents={article}>
             <div className="relative simple-center-grid subgrid-gap">
               <div id="top" className="h-0 m-0 col-body" />
+              <div id="skip-to-frontmatter" />
               <ProjectFrontmatter
-                className="mb-12"
                 projectTitle={manifest?.title ?? 'Project Title'}
                 pageTitle={manifest?.index !== article.slug ? article.frontmatter.title : undefined}
                 authors={article.frontmatter.authors}
@@ -64,9 +64,13 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
               {compute?.enabled && article.kind === SourceFileKind.Article && (
                 <ErrorTray pageSlug={article.slug} />
               )}
-              <h1 id="skip-to-article" className="m-0">
-                {article.frontmatter.enumerator}. {article.frontmatter.title}
-              </h1>
+              <div id="skip-to-article" />
+              {manifest?.index !== article.slug && (
+                <h1 className="pt-12 m-0">
+                  {article.frontmatter.enumerator && <>{article.frontmatter.enumerator}. </>}
+                  {article.frontmatter.title}
+                </h1>
+              )}
               <FrontmatterParts
                 containerClassName="col-body"
                 parts={parts}

@@ -65,18 +65,18 @@ export function Outline({
           <img
             className="dark:hidden"
             src={withBaseurl('/logos/qe-logo.png', baseurl)}
-            alt="a quantecon logo with a cancdlestick chart and text"
+            alt="QuantEcon Logo"
             width={150}
           />
           <img
             className="hidden dark:block"
             src={withBaseurl('/logos/quantecon-logo-transparent.png', baseurl)}
-            alt="a quantecon logo with a cancdlestick chart and text"
+            alt="QuantEcon Logo (dark-mode)"
             width={150}
           />
         </div>
         <p className="text-sm">
-          Powered by <a href="https://mystmd.org">Myst Markdown</a>
+          Powered by <a href="https://mystmd.org">MyST Markdown</a>
         </p>
       </nav>
     </div>

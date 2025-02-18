@@ -1,4 +1,4 @@
-# QuantEcon Theme for Myst Markdown
+# QuantEcon Theme for MyST Markdown
 
 A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 

@@ -1,4 +1,4 @@
-# A QuantEcon Book for Myst Markdown
+# A QuantEcon Book for MyST Markdown
 
 A dedicated MyST interactive book theme for the QuantEcon lectures and books.
 
@@ -87,3 +87,20 @@ make deploy
 ```
 
 This will build a bundled version of the theme and push to the repository at https://github.com/curvenote-themes/quantecon.
+
+## Development
+
+Run a myst content server:
+
+```
+myst start --headless
+```
+
+After cloning the repository, install the packages and start the server:
+
+```
+npm install
+npm run dev
+```
+
+You should then be able to make changes with hot-reload.
