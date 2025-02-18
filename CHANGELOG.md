@@ -1,5 +1,11 @@
 # @curvenote/quantecon-book
 
+## 1.0.6
+
+### Patch Changes
+
+- 9071f34: Update outline text
+
 ## 1.0.5
 
 ### Patch Changes
