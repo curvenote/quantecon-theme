@@ -1,19 +1,19 @@
 import React from 'react';
 import {
-  ReferencesProvider,
   useProjectManifest,
   useSiteManifest,
   GridSystemProvider,
+  ArticleProvider,
 } from '@myst-theme/providers';
 import {
   Bibliography,
-  ContentBlocks,
   FrontmatterParts,
   BackmatterParts,
   extractKnownParts,
   Footnotes,
 } from '@myst-theme/site';
 import type { PageLoader } from '@myst-theme/common';
+import { MyST } from 'myst-to-react';
 import { copyNode, type GenericParent } from 'myst-common';
 import { SourceFileKind } from 'myst-spec-ext';
 import {
@@ -39,8 +39,9 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
 
   return (
     <GridSystemProvider gridSystem="simple-center-grid">
-      <ReferencesProvider
+      <ArticleProvider
         references={{ ...article.references, article: article.mdast }}
+        kind={article.kind}
         frontmatter={article.frontmatter}
       >
         <BusyScopeProvider>
@@ -77,10 +78,9 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
                 keywords={keywords}
                 hideKeywords
               />
-              <ContentBlocks
-                className="col-body prose-qetext-light dark:prose-qetext-dark"
-                pageKind={article.kind}
-                mdast={tree as GenericParent}
+              <MyST
+                className="col-screen prose-qetext-light dark:prose-qetext-dark"
+                ast={tree as GenericParent}
               />
               <BackmatterParts containerClassName="col-body" parts={parts} />
               <Footnotes innerClassName="col-body" />
@@ -91,7 +91,7 @@ export const PageContent = React.memo(function ({ article }: { article: PageLoad
             </div>
           </ExecuteScopeProvider>
         </BusyScopeProvider>
-      </ReferencesProvider>
+      </ArticleProvider>
     </GridSystemProvider>
   );
 });

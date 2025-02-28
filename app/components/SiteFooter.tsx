@@ -1,5 +1,5 @@
 import { useGridSystemProvider } from '@myst-theme/providers';
-import { ContentBlocks } from '@myst-theme/site';
+import { MyST } from 'myst-to-react';
 import classNames from 'classnames';
 import type { GenericParent } from 'myst-common';
 
@@ -12,8 +12,8 @@ export function SiteFooter({ content, className }: { content: GenericParent; cla
         grid
       )}
     >
-      <div className="border-t-[5px] border-t-qeborder-blue col-body" />
-      <ContentBlocks mdast={content} className="col-body" />
+      <div className="border-t-[5px] border-t-qeborder-blue col-body mb-5" />
+      <MyST ast={content} className="col-screen" />
     </div>
   );
 }
